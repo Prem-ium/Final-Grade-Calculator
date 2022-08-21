@@ -19,7 +19,7 @@ Using your terminal, clone this repository and CD into the src file
 Compile & Start the Java program
 ```bash
   javac FinalGradeCalculator.java
-  javac FinalGradeCalculator.java
+  java FinalGradeCalculator
 ```
 ## Demo
 Calcuating the lowest grade necessary to achieve desired final grade:
