@@ -5,6 +5,7 @@ An awesome Java program that will help you determine the lowest possible grade y
 
 
 ## Installation
+![Installation Demo](imgs/installation.gif)
 
 Using your terminal, clone this repository and CD into the src file
 
@@ -19,4 +20,5 @@ Compile & Start the Java program
 ```
 ## Demo
 
-(Coming Soon)
+
+
