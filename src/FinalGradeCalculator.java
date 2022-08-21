@@ -7,18 +7,25 @@
 import java.util.Scanner;
 
 public class FinalGradeCalculator {
-	public static void main(String[] args) throws UnsupportedInputException {
+	public static void main(String[] args) {
 		// Initialize Scanner and Variables
-		Scanner input = new Scanner(System.in);
 		double weight = 0, possiblePoints = 0, earnedPoints;
 		double grade = 0.0, desired, diff, totalWeight = 0;
 		boolean predict = true;
 		int len;
 		Category[] cat = null;
-		try {
+		try (
+				Scanner input = new Scanner(System.in);
+		){
+			// Print Help Message
+			System.out.printf("This program needs to know what makes up your overall grade.%nPretend for a moment your course is similar to the example shown in the ReadMe:%n%n"
+					+ "Assignments (Category #1), Exam 1 (Category #2), Exam 2 (Category #3), and Final Exam (Category #4) are all seperate categories.%nThe total number of categories in this case? 4.%n%n"
+					+ "Exam 1 is worth 25 percent of the overall course grade in the README example.%nWe scored 97.5 out of 100 (or 24.38 points out of 25)."
+					+ "%nWhen the program asks for weight?\t\tEnter 25.%nWhen the program asks for maximum points?\tEnter 100 (OR 25).%nWhen the program asks for your score?\t\tEnter 97.5 (OR 24.38)."
+					+ "%n%n-------------------------------------------------------------------------------------%n");
 			// Prompt user for number of categories (example: Assignments, Homework, Exam 1, Exam 2)
 			// & create an array of Categories
-			System.out.print("Enter the number of categories: ");
+			System.out.print("Input the number of grading categories of your class/course: ");
 			len = input.nextInt();
 			if (len > 0) {
 				cat = new Category[len];
@@ -133,8 +140,6 @@ public class FinalGradeCalculator {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// Close Scanner
-		input.close();
 		
 	}
 	public static void printReport(Category[] array) {
@@ -150,89 +155,4 @@ public class FinalGradeCalculator {
 	}
 }
 
-class Category {
-	private double weight;
-	private double possiblePoints;
-	private double earnedPoints;
-	private double grade;
-	
-	public Category(double weight, double possiblePoints, double earnedPoints) {
-		setWeight(weight);
-		setPossiblePoints(possiblePoints);
-		setEarnedPoints(earnedPoints);
-		setGrade(getEarnedPoints() / getPossiblePoints());
-	}
-	public Category (double weight) {
-		setWeight(weight);
-	}
-	
-	public double getWeight() {
-		return weight;
-	}
-	public void setWeight(double weight) {
-		if (weight < 100) {
-			this.weight = weight / 100.0;
-		}
-	}
-	public double getPossiblePoints() {
-		return possiblePoints;
-	}
-	public void setPossiblePoints(double possiblePoints) {
-		this.possiblePoints = possiblePoints;
-	}
-	public double getEarnedPoints() {
-		return earnedPoints;
-	}
-	public void setEarnedPoints(double earnedPoints) {
-		// Error checking, earned points cannot exceed maximum possible points
-		if (getPossiblePoints() >= earnedPoints) {
-			this.earnedPoints = earnedPoints;
-		}
-	}
 
-	public double getGrade() {
-		return grade;
-	}
-
-	public void setGrade(double grade) {
-		this.grade = grade;
-	}
-	public String toString() {
-		return String.format("Weight:\t%.1f%c\tGrade:\t%.1f", getWeight() * 100.0, '%', getGrade() * 100.0);
-	}
-}
-class UnsupportedInputException extends Exception {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private double negativeWeight;
-	private String reason;
-	
-	public UnsupportedInputException(double negativeWeight, String reason) {
-		setNegativeWeight(negativeWeight);
-		setReason(reason);
-	}
-
-	public double getNegativeWeight() {
-		return negativeWeight;
-	}
-
-	public void setNegativeWeight(double negativeWeight) {
-		this.negativeWeight = negativeWeight;
-	}
-	
-	public String getReason() {
-		return reason;
-	}
-
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
-
-	public String getMessage() {
-		return String.format("ERROR: %.1f -- %s Please restart the program and enter proper input.", getNegativeWeight(), getReason());
-	}
-}
