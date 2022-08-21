@@ -5,9 +5,11 @@ An awesome Java program that will help you determine the lowest possible grade y
 
 
 ## Installation
+
 <p align="center">
   <img src="imgs/installation.gif" alt="animated" />
 </p>
+
 Using your terminal, clone this repository and CD into the src file
 
 ```bash
