@@ -19,6 +19,12 @@ Compile & Start the Java program
   javac FinalGradeCalculator.java
 ```
 ## Demo
+Calcuating the lowest grade necessary to achieve desired final grade:
+
+https://user-images.githubusercontent.com/80719066/185804886-2ef23648-2b8c-472f-b9cc-8d9ffd02263a.mp4
+
+Calculating the final grade, provided having final exam grade:
 
 
+https://user-images.githubusercontent.com/80719066/185804902-d17947d2-78b1-4d0d-9177-05752b3d624d.mp4
 
