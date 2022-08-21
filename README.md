@@ -28,3 +28,8 @@ Calculating the final grade, provided having final exam grade:
 
 https://user-images.githubusercontent.com/80719066/185804902-d17947d2-78b1-4d0d-9177-05752b3d624d.mp4
 
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
