@@ -18,7 +18,7 @@ public class FinalGradeCalculator {
 			Scanner input = new Scanner(System.in);
 		){
 			// Print Help Message
-			System.out.printf("This program needs to know what makes up your overall grade.%nPretend for a moment your course is similar to the example shown in the ReadMe:%n%n"
+			System.out.printf("This program needs to know what makes up your overall grade.%nPretend for a moment your course is similar to the video example shown in the ReadMe:%n%n"
 					+ "Assignments (Category #1), Exam 1 (Category #2), Exam 2 (Category #3), and Final Exam (Category #4) are all seperate categories.%nThe total number of categories in this case? 4.%n%n"
 					+ "Exam 1 is worth 25 percent of the overall course grade in the README example.%nWe scored 97.5 out of 100 (or 24.38 points out of 25)."
 					+ "%nWhen the program asks for weight?\t\tEnter 25.%nWhen the program asks for maximum points?\tEnter 100 (OR 25).%nWhen the program asks for your score?\t\tEnter 97.5 (OR 24.38)."
@@ -27,11 +27,9 @@ public class FinalGradeCalculator {
 			// & create an array of Categories
 			System.out.print("Input the number of grading categories of your class/course: ");
 			len = input.nextInt();
-			if (len > 0) {
-				cat = new Category[len];
-			} else {
-				throw new UnsupportedInputException(len, "number of categories cannot be negative.");
-			}
+			if (len < 0) throw new UnsupportedInputException(len, "Number of categories cannot be negative.");
+			cat = new Category[len];
+			
 			
 			// Run a for-loop and ask user to input values necessary for calculations
 			for (int i = 0; i < cat.length; i++) {
@@ -52,9 +50,8 @@ public class FinalGradeCalculator {
 				
 				System.out.printf("Enter the amount of points you've scored in Category %d: ", i + 1);
 				earnedPoints = input.nextDouble();
-				if (earnedPoints > possiblePoints) {
-					throw new UnsupportedInputException(earnedPoints, "earned points outweigh maximum possible points.");
-				} 
+				if (earnedPoints > possiblePoints) throw new UnsupportedInputException(earnedPoints, "Earned points outweigh maximum possible points.");
+				
 				//Initialize a Category and retrieve the current final grade (so far)
 				cat[i] = new Category(weight, possiblePoints, earnedPoints);
 				grade += (cat[i].getGrade() * cat[i].getWeight()) * 100.0;
@@ -88,9 +85,8 @@ public class FinalGradeCalculator {
 						// Continue as normal if the final has already been taken
 						System.out.printf("%nEnter the amount of points you've scored: ");
 						earnedPoints = input.nextDouble();
-						if (earnedPoints > possiblePoints) {
-							throw new UnsupportedInputException(earnedPoints, "earned points outweigh maximum possible points.");
-						} 
+						if (earnedPoints > possiblePoints) throw new UnsupportedInputException(earnedPoints, "Earned points outweigh maximum possible points.");
+						
 						// Initialize a Category and retrieve the current final grade (so far)
 						cat[i + 1] = new Category(weight, possiblePoints, earnedPoints);
 						grade += (cat[i + 1].getGrade() * cat[i + 1].getWeight()) * 100.0;
