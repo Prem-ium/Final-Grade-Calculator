@@ -15,7 +15,7 @@ public class FinalGradeCalculator {
 		int len;
 		Category[] cat = null;
 		try (
-				Scanner input = new Scanner(System.in);
+			Scanner input = new Scanner(System.in);
 		){
 			// Print Help Message
 			System.out.printf("This program needs to know what makes up your overall grade.%nPretend for a moment your course is similar to the example shown in the ReadMe:%n%n"
@@ -145,11 +145,8 @@ public class FinalGradeCalculator {
 	public static void printReport(Category[] array) {
 		// Print contents of Category array, break if a null is encountered anywhere
 		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) {
-				System.out.printf("Category %d:\t%s%n", i + 1, array[i]);
-			} else {
-				break;
-			}
+			if (array[i] == null) break;
+			System.out.printf("Category %d:\t%s%n", i + 1, array[i]);
 		}
 		System.out.printf("%n%n");
 	}
