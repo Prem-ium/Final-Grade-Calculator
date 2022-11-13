@@ -13,7 +13,7 @@ An awesome Java program that will help you determine the lowest possible grade y
 Using your terminal, clone this repository and CD into the src file
 
 ```bash
-  git clone https://github.com/sazncode/Final-Grade-Calculator.git
+  git clone https://github.com/Prem-ium/Final-Grade-Calculator.git
   cd Final-Grade-Calculator/FinalGradeCalculator/src
 ```
 Compile & Start the Java program
